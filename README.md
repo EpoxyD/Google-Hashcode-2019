@@ -1,5 +1,8 @@
 # Google-Hashcode-2019
 
+### Generate Scoring Calculator
+srglue /usr/local/bin/srlua calculator.lua hashcode_calculator
+
 ### Introduction
 Today, there are more photos then ever. What should we do with all these pictures? In this challenge, we will compose a slideshow out of a photo collection.
 
