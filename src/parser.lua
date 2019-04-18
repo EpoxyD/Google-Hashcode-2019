@@ -1,4 +1,4 @@
-local core = require('core')
+require 'printer'
 
 local function stringToTable(str)
     assert(type(str) == "string")
@@ -10,7 +10,7 @@ local function stringToTable(str)
 end
 
 
-local function parseInput(filename)
+local function parser_input(filename)
     assert(type(filename) == "string")
     local file = io.open(filename,"r")
     io.input(file)
@@ -29,11 +29,7 @@ local function parseInput(filename)
             tags = tags
         }
     end
-    return nr_photos, photos
+    return photos
 end
 
-local parser = {
-    parseInput = parseInput
-}
-
-return parser
+_G.parse = parser_input
