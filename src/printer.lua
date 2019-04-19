@@ -7,9 +7,9 @@ local function printer_table (value, rec_indent)
     for k,v in pairs(value) do
         local type = type(v)
         if type == "table" then
-            print(i..'{')
+            print(table.concat({i,k,' = {'}))
             printer_table(v, i..'    ')
-            print(i..'}')
+            print(table.concat({i,'}'}))
         else
             print(table.concat({i,k,' = ',tostring(v),','}))
         end
