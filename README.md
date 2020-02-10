@@ -3,6 +3,10 @@
 ### Generate Scoring Calculator
 srglue /usr/local/bin/srlua calculator.lua hashcode_calculator
 
+OR
+
+lua solution/calculator.lua <inputfile> <resultfile>
+
 ### Introduction
 Today, there are more photos then ever. What should we do with all these pictures? In this challenge, we will compose a slideshow out of a photo collection.
 
@@ -17,7 +21,7 @@ A photo is described by:
 
 ##### Slideshow
 A slideshow is an ordered list of slides. A slide contains:
-- 1 horizontal / 2 vertical pictures
+- 1 horizontal || 2 vertical pictures
 - the tags of the included pictures
 
 ### Input data set
