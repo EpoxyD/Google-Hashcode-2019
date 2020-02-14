@@ -1,4 +1,5 @@
 #include <map>
+#include <fstream>
 #include <Input.h>
 
 static map<string, bool> inputfiles = {
@@ -11,14 +12,13 @@ static map<string, bool> inputfiles = {
 string getInput(int argc, char *argv[])
 {
     string inputfile;
-    if (argc == 2)
-        inputfile = string(argv[1]);
-    else
+    if (argc != 2)
     {
-        cout << "Please insert an input file: ";
-        cin >> inputfile;
-        cout.flush();
+        cout << "Please append an input file" << endl;
+        exit(EXIT_FAILURE);
     }
+
+    inputfile = string(argv[1]);
 
     if (!inputfiles.count(inputfile))
     {
@@ -31,5 +31,10 @@ string getInput(int argc, char *argv[])
 
 bool parseInput(string inputfile)
 {
+    int nr_slides;
+    ifstream in_stream(inputfile, ifstream::in);
+    in_stream >> nr_slides;
+    cout << nr_slides << endl;
+
     return true;
 }
