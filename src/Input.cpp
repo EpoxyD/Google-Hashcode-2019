@@ -1,6 +1,8 @@
 #include <map>
 #include <fstream>
+
 #include <Input.h>
+#include <Slide.h>
 
 static map<string, bool> inputfiles = {
     {"data/a_example.txt", true},
@@ -9,7 +11,7 @@ static map<string, bool> inputfiles = {
     {"data/d_pet_pictures.txt", true},
     {"data/e_shiny_selfies.txt", true}};
 
-string getInput(int argc, char *argv[])
+string input_get(int argc, char *argv[])
 {
     string inputfile;
     if (argc != 2)
@@ -29,12 +31,32 @@ string getInput(int argc, char *argv[])
     return inputfile;
 }
 
-bool parseInput(string inputfile)
+void input_parse(string inputfile, Slide **slides)
 {
     int nr_slides;
     ifstream in_stream(inputfile, ifstream::in);
     in_stream >> nr_slides;
     cout << nr_slides << endl;
 
-    return true;
+    *slides = (Slide *)calloc(nr_slides, sizeof(Slide));
+
+    for (int i = 0; i < nr_slides; i++)
+    {
+        int nr_tags;
+        string orientation;
+
+        in_stream >> nr_tags;
+        (*slides)[i].setNrTags(nr_tags);
+
+        // in_stream >> orientation;
+        // (*slides)[i].setOrientation(orientation);
+
+        for (int j = 0; j < nr_tags; j++)
+        {
+            string tag;
+            in_stream >> tag;
+            (*slides)[i].addTag(tag);
+        }
+        cout << "added" << endl;
+    }
 }
